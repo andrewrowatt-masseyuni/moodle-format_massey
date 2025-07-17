@@ -16,8 +16,7 @@
 
 namespace format_massey\output;
 
-use core_courseformat\output\section_renderer;
-use moodle_page;
+use format_topics\output\renderer as section_renderer;
 
 /**
  * Massey content class.

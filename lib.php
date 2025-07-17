@@ -22,37 +22,14 @@
  * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 defined('MOODLE_INTERNAL') || die();
-require_once($CFG->dirroot . '/course/format/lib.php');
+
+require_once($CFG->dirroot . '/course/format/topics/lib.php');
 
 /**
  * Defines the course format properties and behaviour.
  */
-class format_massey extends core_courseformat\base {
-
-    /**
-     * Returns true if the format uses the legacy activity indentation.
-     *
-     * @return bool
-     */
-    public function uses_indentation(): bool {
-        return false;
-    }
-
-    /**
-     * Returns the information about the ajax support in the given source format.
-     *
-     * The returned object's property (boolean)capable indicates that
-     * the course format supports Moodle course ajax features.
-     *
-     * @return stdClass
-     */
-    public function supports_ajax(): bool {
-
-        $ajaxsupport = new stdClass();
-        $ajaxsupport->capable = true;
-
-        return $ajaxsupport;
-    }
+class format_massey extends format_topics {
 
 }
+
 
