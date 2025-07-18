@@ -26,7 +26,7 @@ use renderer_base;
  * @copyright  2025 Andrew Rowatt <A.J.Rowatt@massey.ac.nz>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class content extends content_base{
+class content extends content_base {
     /**
      * Export this data so it can be used as the context for a mustache template (core/inplace_editable).
      *
@@ -34,6 +34,22 @@ class content extends content_base{
      * @return stdClass data context for a mustache template
      */
     public function export_for_template(renderer_base $output) {
-        return parent::export_for_template($output);
+        $data = parent::export_for_template($output);
+        
+        $data->sections[0]->header->titlemultipart = "<i>content.phpAJR5:{$data->sections[0]->sectionname}</i>";
+        // echo '<pre>content.php:';var_dump($data->sections[0]->header);echo '</pre>';
+        // $data->sections[0]->header->title = "<i>AJR5:{$data->sections[0]->header->title}</i>";
+        //echo '<pre>content.php:';var_dump($data->sections[0]);echo '</pre>';
+        return $data;
+        //return parent::export_for_template($output);
+    }
+
+    /**
+     * Returns the output class template path.
+     *
+     * This method redirects the default template when the course content is rendered.
+     */
+    public function get_template_name(\renderer_base $renderer): string {
+        return 'format_massey/local/content';
     }
 }
